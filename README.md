@@ -12,7 +12,7 @@ The included workflow publishes the root folder to GitHub Pages on every push to
 
 ## Notes
 
-- Camera and microphone access are requested only after the visitor taps **เปิดกล้อง**.
+- Camera access is requested after the visitor taps **เปิดกล้อง**. Microphone access is requested when recording starts; recording can continue silently if mic access is declined.
 - Clips and their text metadata stay in that browser's IndexedDB; they are not sent to GitHub or a server.
 - Each visitor has their own local clips. Sharing the site shares the app, not the recorded videos.
 - Export uses MP4 when the browser supports it, otherwise WebM. Supported formats depend on the device/browser.
