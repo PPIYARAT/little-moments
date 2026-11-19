@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f8f1e9">
+  <meta name="description" content="เก็บช่วงเล็ก ๆ ของวันนี้ แล้วรวมเป็น Vlog สั้น ๆ ของเรา">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="finishing.css">
+  <title>Little Moments — บันทึกวันนี้</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><img src="assets/icon.png" alt=""><div><span class="eyebrow">YOUR EVERYDAY STORY</span><strong>little moments</strong></div></div>
+      <div class="today-chip"><i></i><span id="todayText">วันนี้</span></div>
+    </header>
+
+    <section class="intro">
+      <div><p class="eyebrow">A DAY IN LITTLE CLIPS</p><h1>วันนี้มีอะไรน่าจำบ้างนะ</h1><p class="subhead">ถ่ายเก็บไว้ทีละช่วง แล้วค่อยรวมเป็นเรื่องราวของวันนี้</p></div>
+      <div class="day-count"><b id="clipCount">0</b><span>ช่วงเวลา</span></div>
+    </section>
+
+    <section class="studio">
+      <div class="camera-wrap">
+        <div class="camera-stage" id="stage">
+          <video id="preview" autoplay muted playsinline></video>
+          <div class="camera-placeholder" id="cameraPlaceholder"><img src="assets/icon.png" alt=""><strong>พร้อมเก็บโมเมนต์ดี ๆ หรือยัง?</strong><span>แตะเปิดกล้อง แล้วเริ่มถ่ายคลิปแรกได้เลย</span></div>
+          <div class="stage-top"><span class="rec-pill" id="recPill"><i></i><span id="recLabel">CAMERA READY</span></span><button class="flip-button" id="flipButton" aria-label="สลับกล้อง">⟳</button></div>
+          <div class="story-stamp" id="storyStamp"><span class="stamp-caption" id="stampCaption"></span><span class="stamp-meta" id="stampMeta"></span></div>
+          <div class="stage-bottom"><span id="recordTimer">00:00</span><span>9:16 STORY</span></div>
+        </div>
+        <div class="camera-actions"><button class="soft-button" id="cameraButton">เปิดกล้อง</button><button class="record-button" id="recordButton" disabled><i></i><span>ถ่ายช่วงนี้</span></button></div>
+        <p class="camera-note" id="statusText">คลิปจะถูกเก็บไว้ในเบราว์เซอร์เครื่องนี้</p>
+      </div>
+
+      <div class="editor">
+        <div class="section-heading"><div><p class="eyebrow">YOUR STORY STAMP</p><h2>ข้อความบนวิดีโอ</h2></div><span class="tiny-sparkle">✳</span></div>
+        <label class="field-label" for="captionInput">ข้อความสั้น ๆ</label>
+        <textarea id="captionInput" rows="2" maxlength="90" placeholder="เช่น วันนี้อากาศดีจัง…"></textarea>
+
+        <div class="field-row"><label class="field-label" for="fontSelect">ฟอนต์</label><label class="field-label" for="colorSelect">สีตัวอักษร</label></div>
+        <div class="field-row"><select id="fontSelect"><option value="sans">มินิมอล</option><option value="serif">เรียบหรู</option><option value="hand">ลายมือ</option><option value="round">นุ่มนวล</option><option value="bold">ตัวหนา</option></select><select id="colorSelect"><option value="white">ขาว</option><option value="black">ดำ</option></select></div>
+
+        <div class="toggle-row"><div><b>ใส่เวลาอัตโนมัติ</b><small>เวลา ณ ตอนเริ่มถ่าย</small></div><label class="toggle"><input id="timeToggle" type="checkbox" checked><span></span></label></div>
+        <div class="toggle-row place-toggle"><div><b>เพิ่มสถานที่</b><small>พิมพ์ชื่อเองได้ ไม่ใช้ GPS</small></div><label class="toggle"><input id="placeToggle" type="checkbox"><span></span></label></div>
+        <input id="placeInput" class="place-input" type="text" maxlength="45" placeholder="📍 พิมพ์ชื่อสถานที่เอง" disabled>
+        <div class="privacy-note"><span>♡</span><p>วิดีโอและข้อความอยู่ในอุปกรณ์ของคุณ เว็บนี้ไม่อัปโหลดคลิปไปที่ไหน</p></div>
+      </div>
+    </section>
+
+    <section class="moments-section">
+      <div class="section-heading moments-heading"><div><p class="eyebrow">COLLECTED TODAY</p><h2>ช่วงเวลาของวันนี้</h2></div><button id="clearButton" class="text-button" disabled>ล้างคลิปวันนี้</button></div>
+      <div id="emptyMoments" class="empty-moments"><span>✿</span><div><b>ยังไม่มีคลิปวันนี้</b><p>เริ่มถ่าย แล้วคลิปจะมาอยู่ตรงนี้นะ</p></div></div>
+      <div id="momentsList" class="moments-list"></div>
+      <div class="export-bar"><div><b>พร้อมเอาไปลงสตอรี่หรือยัง?</b><small>รวมคลิปทั้งหมด พร้อมข้อความและเวลา</small></div><button id="exportButton" class="export-button" disabled>รวมแล้วบันทึกวิดีโอ</button></div>
+      <p class="format-note" id="formatNote">ไฟล์จะดาวน์โหลดลงอุปกรณ์นี้ · รูปแบบขึ้นกับเบราว์เซอร์</p>
+    </section>
+    <footer>made for the little things <span>✳</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
